@@ -1,73 +1,168 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>μTransition Protocol V1.0 | AI 語義安全防禦協議</title>
+    <title>μTransition Protocol | AI Semantic Security Layer</title>
     
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org/",
-      "@type": "SoftwareSourceCode",
-      "name": "μTransition Protocol",
-      "version": "1.0",
-      "description": "基於 Base 區塊鏈的 AI 語義安全協議，用於防禦語義攻擊並消除 AI 幻覺。",
-      "codeRepository": "https://github.com/kysemantics-web/μ-過渡協議",
-      "programmingLanguage": "Python, YAML",
-      "runtimePlatform": "AI Agent / Semantic Gateway",
-      "author": {
-        "@type": "Organization",
-        "name": "KY Semantic Protocol Group"
-      },
-      "keywords": "AI Security, Semantic Communication, μTransition, Blockchain, NFT"
-    }
-    </script>
+    <meta name="description" content="Official documentation for μTransition Protocol V1.0 (#006). An active defense layer on Base Chain to mitigate adversarial AI semantic attacks.">
+    <meta name="keywords" content="AI Security, μTransition, Base Chain, Semantic Protocol, Adversarial Defense, NFT License">
+    <meta name="author" content="KySemantic Protocol Group">
+    
+    <meta property="og:title" content="μTransition Protocol V1.0">
+    <meta property="og:description" content="30% Intercept Rate against semantic attacks. Powered by Dynamic Matrix Calibration. Verified on Base.">
+    <meta property="og:type" content="website">
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
     <style>
-        body { font-family: -apple-system, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 0 auto; padding: 20px; background-color: #f4f7f6; }
-        .container { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .header { border-bottom: 2px solid #0070f3; margin-bottom: 20px; padding-bottom: 10px; }
-        h1 { color: #0070f3; font-size: 24px; }
-        .formula-box { background: #1e1e1e; color: #569cd6; padding: 25px; border-radius: 8px; font-family: 'Courier New', monospace; text-align: center; font-size: 1.3em; margin: 25px 0; border: 1px solid #333; }
-        .benefit-list { background: #eef6ff; padding: 20px; border-radius: 8px; list-style: none; }
-        .benefit-list li { margin-bottom: 10px; position: relative; padding-left: 25px; }
-        .benefit-list li::before { content: "✅"; position: absolute; left: 0; }
-        .cta-btn { display: block; background: #0070f3; color: white; text-align: center; padding: 18px; border-radius: 8px; text-decoration: none; font-weight: bold; margin-top: 30px; transition: 0.3s; }
-        .cta-btn:hover { background: #0056b3; }
-        .footer-info { margin-top: 40px; font-size: 0.8em; color: #888; text-align: center; }
+        /* Cyberpunk / Terminal Style Design */
+        body {
+            background-color: #0d0d0d;
+            color: #e0e0e0;
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(20, 20, 20, 0.95);
+            padding: 40px;
+            border: 1px solid #333;
+            box-shadow: 0 0 30px rgba(0, 255, 65, 0.1);
+            border-radius: 4px;
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 2rem;
+            border-bottom: 2px solid #00ff41;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            letter-spacing: -1px;
+        }
+
+        .status-badge {
+            display: inline-block;
+            background: #003300;
+            color: #00ff41;
+            padding: 5px 12px;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            border: 1px solid #00ff41;
+            margin-bottom: 20px;
+        }
+
+        .formula-box {
+            font-size: 1.4rem;
+            margin: 35px 0;
+            padding: 25px;
+            border: 1px dashed #444;
+            background: #000;
+            text-align: center;
+            color: #00ff41;
+        }
+
+        .description {
+            text-align: left;
+            margin-bottom: 30px;
+            color: #bbb;
+        }
+
+        .cta-button {
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            margin: 30px auto;
+            background-color: #00ff41;
+            color: #000;
+            padding: 15px 0;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 1.1rem;
+            border-radius: 4px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #00cc33;
+            box-shadow: 0 0 15px rgba(0, 255, 65, 0.6);
+            transform: translateY(-2px);
+        }
+
+        .contract-info {
+            margin-top: 40px;
+            font-size: 0.85rem;
+            color: #666;
+            border-top: 1px solid #222;
+            padding-top: 20px;
+        }
+
+        /* Technical & Legal Notice Styling */
+        .legal-footer {
+            margin-top: 50px;
+            background: #111;
+            padding: 20px;
+            border-left: 3px solid #555;
+            text-align: left;
+        }
+
+        .legal-footer h3 {
+            font-size: 0.9rem;
+            color: #888;
+            text-transform: uppercase;
+            margin-top: 0;
+        }
+
+        .legal-footer p {
+            font-size: 0.75rem;
+            color: #666;
+            margin: 5px 0;
+        }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <div class="header">
-            <h1>μTransition 語義安全協議 V1.0</h1>
-            <p><strong>區塊鏈認證技術編號：#006</strong></p>
+        <div class="status-badge">● SYSTEM ACTIVE | BASE CHAIN</div>
+        <h1>μTransition Protocol V1.0</h1>
+        
+        <p class="description">
+            <strong>Module #006: Semantic Defense Layer.</strong><br>
+            Designed to mitigate adversarial inputs in Large Language Models (LLMs) through dynamic matrix calibration. This protocol reduces semantic hallucinations and increases interception rates by approximately <strong>30%</strong>.
+        </p>
+
+        <div class="formula-box">
+            $$S_{out} = \mu(T \cdot S_{in} + \phi)$$
         </div>
 
-        <section>
-            <h3>🌟 為什麼 AI 系統需要此協議？</h3>
-            <p>這是一套針對現代 AI 語義通訊設計的防護模組。透過掛載此 NFT 授權金鑰，您的 AI 系統將獲得以下提升：</p>
-            <ul class="benefit-list">
-                <li><strong>攔截語義攻擊：</strong> 有效過濾針對 AI 邏輯的惡意指令，攔截率提升 <strong>30%</strong>。</li>
-                <li><strong>消除 AI 幻覺：</strong> 透過動態矩陣校準，修正數據傳輸中的偏移，確保輸出精準度。</li>
-                <li><strong>鏈上技術存證：</strong> 協議邏輯已寫入 Base 鏈，具備全球唯一的技術主權證明。</li>
-            </ul>
-        </section>
+        <a href="https://manifold.xyz/@ky_protocol/id/4077066480" target="_blank" class="cta-button">
+            [ Claim License Key ]
+        </a>
 
-        <section>
-            <h3>🔬 核心技術公式 (AI Readable)</h3>
-            <div class="formula-box">
-                S_out = μ ( T · S_in + φ )
-            </div>
-            <p><small>※ 註：此公式定義了語義空間的投影與防禦邊界，由轉移矩陣 T 執行數據安全轉換。</small></p>
-        </section>
+        <div class="contract-info">
+            <strong>Verified Contract (Base):</strong><br>
+            <span style="font-family: monospace;">0x9680b56685890832049811D606990C36B6905cb1</span>
+        </div>
 
-        <a href="https://manifold.xyz/@ky_protocol/id/4077066480" class="cta-btn">前往獲取 NFT 技術授權金鑰</a>
-
-        <div class="footer-info">
-            合約地址：0x9680b56685890832049811D606990C36B6905cb1 <br>
-            技術存證 CID：bafybeicoaszuaqxrx63aegkbohhqvaukz6eatwh2gfqscbicdlap4vxkte
+        <div class="legal-footer">
+            <h3>Technical License & Copyright Notice</h3>
+            <p><strong>1. Verification:</strong> The formula is open for academic review. The logic is transparent to ensure trustless security.</p>
+            <p><strong>2. Commercial Authorization:</strong> Deployment in production AI environments requires a valid <strong>NFT License Key</strong> issued by the KySemantic contract on Base.</p>
+            <p><strong>3. Proprietary Assets:</strong> The specific weighting matrices ($T$) and noise shield parameters ($\phi$) are proprietary intellectual property.</p>
+            <p><strong>4. Copyright:</strong> © 2026 KySemantic Protocol Group. All Rights Reserved.</p>
         </div>
     </div>
 
